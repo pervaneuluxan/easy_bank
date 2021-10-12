@@ -1,0 +1,131 @@
+.footer{
+    background-color: $darkBlue;
+    padding: 2.5rem;
+    text-align: center;
+    .container{
+        @include breakpoint_up(large){
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 3fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: 'logo links1 links2 cta'
+        'social links1 links2 copyright';
+        justify-items: start;
+        gap: 1rem;
+    }
+
+    }
+
+    a{
+        color: $white;
+    }
+
+    &_logo{
+      
+        display:inline-block;
+
+          @include breakpoint_down(medium){
+                 margin-bottom: 1.875rem;
+          }
+
+        @include breakpoint_up(large){
+            grid-area: logo;
+        }
+        
+    }
+
+    &_social{
+     
+
+          @include breakpoint_down(medium){
+                margin-bottom: 1.875rem;
+          }
+
+           @include breakpoint_up(large){
+            grid-area: social;
+            align-self: flex-end;
+         
+        }
+
+          a{
+              display: inline-block;
+              margin-right: 1rem;
+
+              svg path{
+                transition: all 150ms ease-in-out;
+              }
+            
+              &:hover svg path{  
+                fill: hsl(136, 65%, 51%);
+              }
+
+              &:last-child{
+                margin-right: 0;
+              }
+          }
+
+    }
+
+    &_links{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include breakpoint_up(large){
+            align-items: start;
+            justify-content: space-between;
+        }
+
+        a{
+            line-height: 2.25;
+            transition: all .3s ease-in-out;
+            font-size: 0.9375rem;
+
+            &:hover{
+                color: $limeGreen;
+            }
+        }
+        
+
+        &.col1{
+             @include breakpoint_up(large){
+            grid-area: links1;
+        }
+
+        }
+        &.col2{
+
+            @include breakpoint_down(medium){
+                margin-bottom: 1.875rem;
+            }
+            @include breakpoint_up(large){
+            grid-area: links2;
+            }
+
+        }
+
+    }
+    &_cta{
+         @include breakpoint_up(large){
+            grid-area: cta;
+            justify-self: end;
+        }
+
+        button{
+              @include breakpoint_down(medium){
+                 margin-bottom: 1.875rem;
+          }
+
+        }
+    }
+    &_copyright{
+        font-size: 0.8125rem;
+        color: $grayisBlue;
+
+        @include breakpoint_up(large){
+            grid-area: copyright;
+            justify-self: flex-end;
+            align-self: flex-end;
+        }
+
+    }
+}
